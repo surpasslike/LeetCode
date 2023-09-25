@@ -1,63 +1,134 @@
 #include <iostream>
 #include <vector>
-
+#include <stack>
 using namespace std;
 
-struct TreeNode {
+struct TreeNode
+{
     int val;
     TreeNode *left;
     TreeNode *right;
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-class Solution {
+// class Solution// 递归
+// {
+// public:
+//     void inorder(TreeNode *root, vector<int> &res)
+//     {
+//         if (!root)
+//             return;
+//         inorder(root->left, res);
+//         res.push_back(root->val);
+//         inorder(root->right, res);
+//     }
+
+//     vector<int> inorderTraversal(TreeNode *root)
+//     {
+//         vector<int> res2;
+//         inorder(root, res2);
+//         return res2;
+//     }
+// };
+
+class Solution
+{
 public:
-    void inorder(TreeNode* root, vector<int>& res) {
-        if (!root) return;
-        inorder(root->left, res);
-        res.push_back(root->val);
-        inorder(root->right, res);
-    }
-    
-    vector<int> inorderTraversal(TreeNode* root) {
+    // 定义一个枚举类型Color，它有两个可能的值：WHITE和GRAY
+    enum Color
+    {
+        WHITE,
+        GRAY
+    };
+
+    /*
+    使用颜色标记节点的状态，新节点为白色，已访问的节点为灰色。
+    如果遇到的节点为白色，则将其标记为灰色，然后将其右子节点、自身、左子节点依次入栈。
+    如果遇到的节点为灰色，则将节点的值输出。
+    */
+
+    // 定义一个名为inorderTraversal的公有成员函数，它接收一个TreeNode指针作为参数并返回一个整数向量
+    vector<int> inorderTraversal(TreeNode *root)
+    {
+        // 定义一个整数向量res，用于存储中序遍历的结果
         vector<int> res;
-        inorder(root, res);
+
+        // 定义一个栈，栈中的元素是一对Color和TreeNode指针
+        stack<pair<Color, TreeNode *>> stack;
+
+        // 将一对{WHITE, root}压入栈中
+        stack.push({WHITE, root});
+
+        // 当栈不为空时，执行循环
+        while (!stack.empty())
+        {
+            // 从栈顶取出一对元素并存入color和node中，然后从栈中移除这对元素
+            Color color = stack.top().first;
+            TreeNode *node = stack.top().second;
+            stack.pop();
+
+            // 如果node是NULL，跳过这次循环的剩余部分，执行下一次循环
+            if (node == NULL)
+                continue;
+
+            // 如果color等于WHITE，按照中序遍历的顺序，依次将节点的右孩子、节点本身和左孩子压入栈中
+            if (color == WHITE)
+            {
+                stack.push({WHITE, node->right});
+                stack.push({GRAY, node});
+                stack.push({WHITE, node->left});
+            }
+            else
+            {
+                // 如果color不等于WHITE（即color等于GRAY），将节点的值添加到res向量中
+                res.push_back(node->val);
+            }
+        }
+
+        // 返回存储中序遍历结果的res向量
         return res;
     }
 };
 
-int main() {
+int main()
+{
     int n;
     cout << "Enter the number of nodes: ";
     cin >> n;
-    
-    vector<TreeNode*> nodes;
-    for(int i = 0; i < n; i++) {
+
+    vector<TreeNode *> nodes;
+    for (int i = 0; i < n; i++)
+    {
         int val;
         cout << "Enter value for node " << i + 1 << ": ";
         cin >> val;
-        
+
         nodes.push_back(new TreeNode(val));
     }
-    
-    for(int i = 0; i < n; i++) {
+
+    for (int i = 0; i < n; i++)
+    {
         int leftIndex, rightIndex;
         cout << "Enter left and right child indices for node " << i + 1 << " (-1 for no child): ";
         cin >> leftIndex >> rightIndex;
-        
-        if(leftIndex != -1) nodes[i]->left = nodes[leftIndex];
-        if(rightIndex != -1) nodes[i]->right = nodes[rightIndex];
+
+        if (leftIndex != -1)
+            nodes[i]->left = nodes[leftIndex];
+        if (rightIndex != -1)
+            nodes[i]->right = nodes[rightIndex];
     }
-    
+
     Solution sol;
     vector<int> res = sol.inorderTraversal(nodes[0]);
-    
+
     cout << "Inorder Traversal: ";
-    for(const int& num : res) cout << num << ' ';
+    for (const int &num : res)
+        cout << num << ' ';
     cout << '\n';
-    
-    for(auto& node : nodes) delete node;
-    
+
+    for (auto &node : nodes)
+        delete node;
+
     return 0;
 }
 
