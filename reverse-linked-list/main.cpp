@@ -60,6 +60,16 @@ int main()
     head->next->next->next = new ListNode(4);
     head->next->next->next->next = new ListNode(5);
 
+    // 打印初始链表
+    cout << "Initial List: ";
+    ListNode *current = head;
+    while (current != nullptr)
+    {
+        cout << current->val << "->";
+        current = current->next;
+    }
+    cout << "nullptr" << endl;
+
     // 创建Solution对象
     Solution sol;
 
@@ -67,13 +77,13 @@ int main()
     ListNode *newHead = sol.reverseList(head);
 
     // 打印反转后的链表
-    std::cout << "Reversed List: ";
+    cout << "Reversed List: ";
     while (newHead != nullptr)
     {
-        std::cout << newHead->val << " ";
+        cout << newHead->val << "->";
         newHead = newHead->next;
     }
-    std::cout << "nullptr" << std::endl;
+    cout << "nullptr" << endl;
 
     // 释放链表节点内存
     while (head != nullptr)
