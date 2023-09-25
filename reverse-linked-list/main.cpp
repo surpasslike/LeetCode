@@ -10,19 +10,22 @@ struct ListNode
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-class Solution {
+class Solution
+{
 public:
-    ListNode* reverseList(ListNode* head) {
-        ListNode* prev = nullptr; // 指向前一个节点的指针
-        ListNode* curr = head;    // 指向当前节点的指针
-        
-        while(curr != nullptr) {  // 当当前节点不为空时，继续遍历
-            ListNode* nextTemp = curr->next; // 暂存下一个节点
-            curr->next = prev;  // 将当前节点的 next 指针指向前一个节点，实现反转
-            prev = curr;    // 将前一个节点指针向后移动
-            curr = nextTemp; // 将当前节点指针向后移动
+    ListNode *reverseList(ListNode *head)
+    {
+        ListNode *prev = nullptr; // 指向前一个节点的指针
+        ListNode *curr = head;    // 指向当前节点的指针
+
+        while (curr != nullptr)
+        {                                    // 当当前节点不为空时，继续遍历
+            ListNode *nextTemp = curr->next; // 暂存下一个节点
+            curr->next = prev;               // 将当前节点的 next 指针指向前一个节点，实现反转
+            prev = curr;                     // 将前一个节点指针向后移动
+            curr = nextTemp;                 // 将当前节点指针向后移动
         }
-        return prev;  // 当前节点指针到达链表末尾，返回前一个节点指针，即反转后的头节点
+        return prev; // 当前节点指针到达链表末尾，返回前一个节点指针，即反转后的头节点
     }
 
     /*
@@ -44,13 +47,41 @@ public:
     综上所述：第一轮的结果是prev变成了2->1->null，curr变成了3->4->5->null
 
     以此类推...
-    返回prev即为答案  
+    返回prev即为答案
     */
 };
 
-
 int main()
 {
-    /*今后不再写int main*/
+    // 创建链表：1 -> 2 -> 3 -> 4 -> 5 -> nullptr
+    ListNode *head = new ListNode(1);
+    head->next = new ListNode(2);
+    head->next->next = new ListNode(3);
+    head->next->next->next = new ListNode(4);
+    head->next->next->next->next = new ListNode(5);
+
+    // 创建Solution对象
+    Solution sol;
+
+    // 调用reverseList方法反转链表
+    ListNode *newHead = sol.reverseList(head);
+
+    // 打印反转后的链表
+    std::cout << "Reversed List: ";
+    while (newHead != nullptr)
+    {
+        std::cout << newHead->val << " ";
+        newHead = newHead->next;
+    }
+    std::cout << "nullptr" << std::endl;
+
+    // 释放链表节点内存
+    while (head != nullptr)
+    {
+        ListNode *temp = head;
+        head = head->next;
+        delete temp;
+    }
+
     return 0;
 }
