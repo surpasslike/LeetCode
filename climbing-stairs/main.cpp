@@ -7,19 +7,19 @@ class Solution
 public:
     int climbStairs(int n)
     {
-        if (n < 3)
+        int p = 0, q = 0, r = 1;
+        for (int i = 1; i <= n; ++i)
         {
-            return n;
+            p = q;
+            q = r;
+            r = p + q;
         }
-        else
-        {
-            return climbStairs(n - 1) + climbStairs(n - 2);
-        }
+        return r;
     }
 };
 
 int main()
 {
-    
+
     return 0;
 }
