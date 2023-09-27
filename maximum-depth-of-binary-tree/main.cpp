@@ -12,7 +12,6 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
 
-// 你的Solution类
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
