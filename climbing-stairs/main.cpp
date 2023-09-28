@@ -20,6 +20,9 @@ public:
 
 int main()
 {
-
+    int n;
+    Solution test;
+    cin >> n;
+    cout << test.climbStairs(n);
     return 0;
 }
