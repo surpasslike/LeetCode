@@ -2,14 +2,19 @@
 #include <vector>
 
 using namespace std;
-//两数之和
-class Solution {
+// 两数之和
+class Solution
+{
 public:
-    vector<int> twoSum(vector<int>& nums, int target) {
+    vector<int> twoSum(vector<int> &nums, int target)
+    {
         int i, j;
-        for(i = 0; i < nums.size() - 1; i++) {
-            for(j = i + 1; j < nums.size(); j++) {
-                if(nums[i] + nums[j] == target) {
+        for (i = 0; i < nums.size() - 1; i++)
+        {
+            for (j = i + 1; j < nums.size(); j++)
+            {
+                if (nums[i] + nums[j] == target)
+                {
                     return {i, j};
                 }
             }
@@ -18,7 +23,8 @@ public:
     }
 };
 
-int main() {
+int main()
+{
     Solution sol;
 
     // 输入数组大小
@@ -29,7 +35,8 @@ int main() {
     // 输入数组元素
     vector<int> nums(n);
     cout << "Enter " << n << " integers:" << endl;
-    for(int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
+    {
         cin >> nums[i];
     }
 
@@ -42,9 +49,12 @@ int main() {
     vector<int> result = sol.twoSum(nums, target);
 
     // 打印结果
-    if (!result.empty()) {
+    if (!result.empty())
+    {
         cout << "Indices: [" << result[0] << ", " << result[1] << "]" << endl;
-    } else {
+    }
+    else
+    {
         cout << "No solution found." << endl;
     }
 
@@ -58,7 +68,7 @@ int main() {
 
 你可以按任意顺序返回答案。
 
- 
+
 
 示例 1：
 
@@ -73,7 +83,7 @@ int main() {
 
 输入：nums = [3,3], target = 6
 输出：[0,1]
- 
+
 
 提示：
 
@@ -81,7 +91,7 @@ int main() {
 -109 <= nums[i] <= 109
 -109 <= target <= 109
 只会存在一个有效答案
- 
+
 
 进阶：你可以想出一个时间复杂度小于 O(n2) 的算法吗？
 */

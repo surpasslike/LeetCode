@@ -1,7 +1,7 @@
 #include <iostream>
 
 using namespace std;
-//爬楼梯
+// 爬楼梯
 class Solution
 {
 public:
@@ -32,7 +32,7 @@ int main()
 
 每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
 
- 
+
 
 示例 1：
 

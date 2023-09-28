@@ -2,7 +2,7 @@
 #include <vector>
 #include <stack>
 using namespace std;
-//二叉树的中序遍历
+// 二叉树的中序遍历
 struct TreeNode
 {
     int val;
@@ -135,7 +135,7 @@ int main()
 /*
 给定一个二叉树的根节点 root ，返回 它的 中序 遍历 。
 
- 
+
 
 示例 1：
 
@@ -150,7 +150,7 @@ int main()
 
 输入：root = [1]
 输出：[1]
- 
+
 
 提示：
 
