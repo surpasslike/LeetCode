@@ -2,6 +2,7 @@
 #include <vector>
 using namespace std;
 //最长递增子序列
+//详细解释：https://zhuanlan.zhihu.com/p/365698607
 class Solution
 {
 public:
