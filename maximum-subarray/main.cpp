@@ -3,19 +3,42 @@
 using namespace std;
 // 最大子数组和
 
+// class Solution
+// {
+// public:
+//     int maxSubArray(vector<int> &nums)
+//     {
+//         //记录一个错误的答案
+//         if (nums.size() == 0)
+//         {
+//             return 0;
+//         }
+//         int maxans = -104;
+//         vector<int> dp(nums.size(), 1);
+//         for (int i = 0; i < nums.size(); i++)
+//         {
+//             dp[i] = max(nums[i], dp[i - 1] + nums[i]);
+//             maxans = max(dp[i], maxans);
+//         }
+//         return maxans;
+//     }
+// };
 class Solution
 {
 public:
     int maxSubArray(vector<int> &nums)
     {
-        //记录一个错误的答案
         if (nums.size() == 0)
         {
             return 0;
         }
-        int maxans = -104;
-        vector<int> dp(nums.size(), 1);
-        for (int i = 0; i < nums.size(); i++)
+        int maxans = INT_MIN; // 使用INT_MIN
+        vector<int> dp(nums.size());
+
+        dp[0] = nums[0]; // 初始化dp[0]
+        maxans = dp[0];  // 同样地，更新maxans
+
+        for (int i = 1; i < nums.size(); i++) // 从i = 1开始
         {
             dp[i] = max(nums[i], dp[i - 1] + nums[i]);
             maxans = max(dp[i], maxans);
