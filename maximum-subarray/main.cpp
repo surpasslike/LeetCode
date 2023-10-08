@@ -8,14 +8,19 @@ class Solution
 public:
     int maxSubArray(vector<int> &nums)
     {
+        //记录一个错误的答案
         if (nums.size() == 0)
         {
             return 0;
         }
-
+        int maxans = -104;
         vector<int> dp(nums.size(), 1);
-        // dp[i] = max(nums[i], dp[i-1] + nums[i])
-        
+        for (int i = 0; i < nums.size(); i++)
+        {
+            dp[i] = max(nums[i], dp[i - 1] + nums[i]);
+            maxans = max(dp[i], maxans);
+        }
+        return maxans;
     }
 };
 
