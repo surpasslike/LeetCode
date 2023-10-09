@@ -45,6 +45,7 @@ auto 是 C++11 引入的一个关键字，它允许编译器自动为变量推�
 
 综上所述，这种方法利用了 std::remove 的特性，先将所有非零元素移到数组的前面，然后确保数组的剩余部分都是0。这是一种高效且简洁的方法来解决“移动零”这个问题。
 */
+
 /*
 给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
 
@@ -70,4 +71,21 @@ auto 是 C++11 引入的一个关键字，它允许编译器自动为变量推�
 1036089
 9103608
 8910360
+*/
+
+/*
+官方题解:
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int n = nums.size(), left = 0, right = 0;
+        while (right < n) {
+            if (nums[right]) {
+                swap(nums[left], nums[right]);
+                left++;
+            }
+            right++;
+        }
+    }
+};
 */
