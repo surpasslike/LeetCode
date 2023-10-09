@@ -2,7 +2,7 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-//移动零
+// 移动零
 class Solution
 {
 public:
