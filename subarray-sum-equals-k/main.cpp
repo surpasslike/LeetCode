@@ -1,26 +1,26 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include <unordered_map>
 using namespace std;
 // 和为 K 的子数组
 
 class Solution // 这个是官方题解
 {
 public:
-    int subarraySum(vector<int> &nums, int k)
+    int
+    subarraySum(vector<int> &nums, int k)
     {
-        int count = 0;
-        for (int start = 0; start < nums.size(); ++start)
+        unordered_map<int, int> mp;
+        mp[0] = 1;
+        int count = 0, pre = 0;
+        for (auto &x : nums)
         {
-            int sum = 0;
-            for (int end = start; end >= 0; --end)
+            pre += x;
+            if (mp.find(pre - k) != mp.end())
             {
-                sum += nums[end];
-                if (sum == k)
-                {
-                    count++;
-                }
+                count += mp[pre - k];
             }
+            mp[pre]++;
         }
         return count;
     }
