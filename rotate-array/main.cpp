@@ -1,20 +1,14 @@
 #include <iostream>
 #include <vector>
-<<<<<<< HEAD
 using namespace std;
 // 轮转数组
-=======
-// 轮转数组
-using namespace std;
->>>>>>> de5412c788b1dd65124666dcb731d215bfad0435
+
 class Solution
 {
 public:
     void rotate(vector<int> &nums, int k)
     {
-        
     }
-<<<<<<< HEAD
 };
 
 /*
@@ -51,6 +45,7 @@ public:
 尽可能想出更多的解决方案，至少有 三种 不同的方法可以解决这个问题。
 你可以使用空间复杂度为 O(1) 的 原地 算法解决这个问题吗？
 */
-=======
-};
+== == == =
+}
+;
 >>>>>>> de5412c788b1dd65124666dcb731d215bfad0435
