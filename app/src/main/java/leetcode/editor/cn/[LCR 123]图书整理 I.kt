@@ -32,7 +32,7 @@ import leetcode.editor.cn.ListNode
  *     var next: ListNode? = null
  * }
  */
-class Solution {
+class SolutionreverseBookList {
     fun reverseBookList(head: ListNode?): IntArray {
         var intArray = mutableListOf<Int>()
         var head = head

@@ -52,7 +52,7 @@ import leetcode.editor.cn.TreeNode
  *     var right: TreeNode? = null
  * }
  */
-class Solution {
+class SolutioninorderTraversal {
     fun inorderTraversal(root: TreeNode?): List<Int> {
         val result: MutableList<Int> = arrayListOf()
         iorder(root, result)
