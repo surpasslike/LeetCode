@@ -63,7 +63,7 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class SolutionIsValid {
     fun isValid(s: String): Boolean {
         val sLength = s.length
         val solution = ArrayDeque<String>()
