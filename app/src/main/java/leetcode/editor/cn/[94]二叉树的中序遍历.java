@@ -61,7 +61,7 @@ import java.util.List;
  *     }
  * }
  */
-class Solution {
+class SolutionInorderTraversalJava {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
         inorder(root, result);
