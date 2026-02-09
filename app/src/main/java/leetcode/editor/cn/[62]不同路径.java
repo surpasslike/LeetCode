@@ -52,7 +52,7 @@ package leetcode.editor.cn;//一个机器人位于一个 m x n 网格的左上�
 //leetcode submit region begin(Prohibit modification and deletion)
 
 // 两个思路, 一个是动态规划(当前等于上两个孩子的和), 一个是组合数字(总步数固定,右下有多少组合?)
-class Solution {
+class SolutionuniquePaths {
     // 方案1组合数字
     public int uniquePaths(int m, int n) {
         if (m == 1 || n == 1) {
