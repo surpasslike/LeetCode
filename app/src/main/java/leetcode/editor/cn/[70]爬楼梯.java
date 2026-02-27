@@ -40,7 +40,7 @@ import android.animation.IntArrayEvaluator;
 import java.lang.reflect.Array;
 
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+class SolutionclimbStairs {
     public int climbStairs(int n) {
         if (n <= 2) {
             return n;
